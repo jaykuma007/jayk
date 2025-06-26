@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jay Kumar - Senior Manager, Multi-Cloud Platform Architect</title>
+    <script src="https://kit.fontawesome.com/9a5f7f9c4a.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-blue: #4F46E5;
+            --secondary-green: #10B981;
+            --accent-purple: #8B5CF6;
+            --dark-bg: #0F172A;
+            --light-gray: #F1F5F9;
+            --text-primary: #1E293B;
+            --text-secondary: #64748B;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            max-width: 800px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            object-fit: cover;
+            border: 4px solid white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-blue), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .location {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+        .contact-item:hover {
+            color: var(--primary-blue);
+            background: rgba(79, 70, 229, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .contact-item i {
+            color: var(--primary-blue);
+        }
+
+        .buttons-container {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .nav-button {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 16px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            min-width: 200px;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .professional-btn {
+            background: linear-gradient(135deg, var(--primary-blue), #3B82F6);
+            color: white;
+        }
+
+        .professional-btn:hover {
+            background: linear-gradient(135deg, #3B82F6, var(--primary-blue));
+        }
+
+        .academic-btn {
+            background: linear-gradient(135deg, var(--secondary-green), #059669);
+            color: white;
+        }
+
+        .academic-btn:hover {
+            background: linear-gradient(135deg, #059669, var(--secondary-green));
+        }
+
+        .personal-btn {
+            background: linear-gradient(135deg, var(--accent-purple), #7C3AED);
+            color: white;
+        }
+
+        .personal-btn:hover {
+            background: linear-gradient(135deg, #7C3AED, var(--accent-purple));
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+            margin-top: 3rem;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 2rem;
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .job {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .job-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .job-meta {
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .job ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .job li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .job li::before {
+            content: '▶';
+            color: var(--primary-blue);
+            position: absolute;
+            left: 0;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .skill-category {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            border-radius: 12px;
+            border-top: 3px solid var(--secondary-green);
+        }
+
+        .skill-category h4 {
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: var(--text-primary);
+            padding: 0.75rem 1.5rem;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateX(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+                margin: 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .buttons-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-button {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Home Section -->
+        <div id="home-section">
+            <img src="./j.jpeg" alt="Jay Kumar" class="profile-image" onerror="this.style.display='none'; document.getElementById('fallback-avatar').style.display='flex';">
+            <div id="fallback-avatar" style="display: none; width: 150px; height: 150px; border-radius: 50%; margin: 0 auto 2rem; background: linear-gradient(135deg, #4F46E5, #8B5CF6); align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: 700; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); border: 4px solid white;">
+                JK
+            </div>
+            
+            <h1>Jay Kumar</h1>
+            <p class="subtitle">Senior Manager – Multi-Cloud Platform Architect</p>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Tokyo, Japan • +81 80 7893 5466</span>
+            </div>
+
+            <div class="contact-info">
+                <a href="mailto:jay.choubey007@gmail.com" class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>jay.choubey007@gmail.com</span>
+                </a>
+                <a href="https://linkedin.com/in/jayk007" target="_blank" class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>linkedin.com/in/jayk007</span>
+                </a>
+                <a href="https://github.com/jaykuma007" target="_blank" class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <span>github.com/jaykuma007</span>
+                </a>
+            </div>
+
+            <div class="buttons-container">
+                <button class="nav-button professional-btn" onclick="showSection('professional')">
+                    <i class="fas fa-briefcase"></i>
+                    Professional Experience
+                </button>
+                <button class="nav-button academic-btn" onclick="showSection('academic')">
+                    <i class="fas fa-graduation-cap"></i>
+                    Academic & Certifications
+                </button>
+                <button class="nav-button personal-btn" onclick="showSection('personal')">
+                    <i class="fas fa-heart"></i>
+                    Personal Interests
+                </button>
+            </div>
+        </div>
+
+        <!-- Professional Experience Section -->
+        <div id="professional-section" class="content-section">
+            <button class="back-button" onclick="showSection('home')">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </button>
+            <h2 style="color: var(--primary-blue); margin-bottom: 2rem; font-size: 2rem;">
+                <i class="fas fa-briefcase"></i> Professional Experience
+            </h2>
+            
+            <div class="job">
+                <h3 class="job-title">SENIOR MANAGER, MULTI-CLOUD & SECURITY PLATFORM • Asahi Group Holding Ltd</h3>
+                <p class="job-meta">Tokyo, Japan • Sep 2022 - Present</p>
+                <ul>
+                    <li>Led Multi-Cloud & Security Platform Engineering, aligning IT strategies with business goals.</li>
+                    <li>Architected and managed hybrid infrastructures across Azure, AWS, GCP, and on-premise.</li>
+                    <li>Directed the build/deployment of low-latency RAG monetization applications and established MLOps.</li>
+                    <li>Oversaw enterprise-wide Identity and Access Management (IAM) and application registration.</li>
+                    <li>Implemented cloud-native tools: Azure Defender, Sentinel, Azure ML, AWS (EKS, ECS), GCP (GKE, BigQuery).</li>
+                    <li>Championed CI/CD automation and drove cost optimization through FinOps practices.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <h3 class="job-title">HEAD OF CLOUD OPS • RAKUTEN MOBILE INC</h3>
+                <p class="job-meta">Tokyo, Japan • Jan 2019 - Aug 2022</p>
+                <ul>
+                    <li>Managed a team of 30 SREs ensuring availability and reliability of the Telco cloud for 4G/5G workloads.</li>
+                    <li>Oversaw Day 2 cloud operations and managed Cisco ACI-based data center infrastructure.</li>
+                    <li>Led critical incident management, conducted root cause analysis, and pioneered Chaos Engineering.</li>
+                </ul>
+            </div>
+
+            <div class="job">
+                <h3 class="job-title">Previous Experience</h3>
+                <p><strong>Technical Services Specialist, UNIX • IBM</strong> (2015-2017): Led UNIX/Linux admin for SAP ECC; expert in Veritas Cluster, Oracle RAC, and IaC (Ansible/Terraform).</p>
+                <p><strong>Asst. Manager, BUILD PLATFORM • Samsung</strong> (2013-2015): Managed Linux servers, storage (HP 3PAR, NetApp), and CI/CD tools (Perforce, Jenkins, JFrog).</p>
+                <p><strong>Sr. Analyst, UNIX/LINUX PLATFORM • HCL</strong> (2011-2013): SME for RHEL/AIX/HP-UX; led Data Center design (HLD/LLD) and BCP/DR drills.</p>
+                <p><strong>NOC ENGINEER • CMC LTD (TCS)</strong> (2010-2011): Configured Cisco network hardware for core banking systems.</p>
+            </div>
+        </div>
+
+        <!-- Academic & Certifications Section -->
+        <div id="academic-section" class="content-section">
+            <button class="back-button" onclick="showSection('home')">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </button>
+            <h2 style="color: var(--secondary-green); margin-bottom: 2rem; font-size: 2rem;">
+                <i class="fas fa-graduation-cap"></i> Academic & Certifications
+            </h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4><i class="fas fa-university"></i> Education</h4>
+                    <div style="margin-bottom: 1.5rem;">
+                        <strong>M.S., Artificial Intelligence & Machine Learning</strong><br>
+                        <span style="color: var(--text-secondary);">Liverpool John Moores University, UK (2023)</span>
+                    </div>
+                    <div>
+                        <strong>B.E., Information Technology</strong><br>
+                        <span style="color: var(--text-secondary);">University of Rajasthan, INDIA (2009)</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h4><i class="fas fa-certificate"></i> Key Certifications</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 0.5rem;">🏆 CKA, CKS, TOGAF, PMP, CSM</li>
+                        <li style="margin-bottom: 0.5rem;">☁️ Azure (x10), RHCE, OCP, ITIL</li>
+                        <li>📊 AIPMM Certified Product Manager</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-cloud"></i> Cloud Platforms</h4>
+                    <p>Azure, AWS, Google Cloud Platform (GCP)</p>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-cogs"></i> Architecture & Strategy</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>Solution & Enterprise Architecture (TOGAF)</li>
+                        <li>Multi-Cloud Strategy & FinOps</li>
+                        <li>MLOps & AI Infrastructure</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-server"></i> Infrastructure & Operations</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>Kubernetes (CKA, CKS)</li>
+                        <li>Linux / Unix Administration</li>
+                        <li>CI/CD, DevOps, SRE</li>
+                        <li>IaC (Terraform, Ansible)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h4><i class="fas fa-language"></i> Languages</h4>
+                    <ul style="list-style: none; padding: 0;">
+                        <li>🇬🇧 English (Advanced)</li>
+                        <li>🇯🇵 Japanese (Elementary)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Personal Interests Section -->
+        <div id="personal-section" class="content-section">
+            <button class="back-button" onclick="showSection('home')">
+                <i class="fas fa-arrow-left"></i> Back to Home
+            </button>
+            <h2 style="color: var(--accent-purple); margin-bottom: 2rem; font-size: 2rem;">
+                <i class="fas fa-heart"></i> Personal Interests
+            </h2>
+            
+            <div class="skills-grid">
+                <div class="skill-category" style="border-top-color: var(--accent-purple);">
+                    <h4><i class="fas fa-plane-departure"></i> Travel & Culture</h4>
+                    <p>Passionate about exploring new cultures, landscapes, and cuisines around the world. Each journey brings fresh perspectives and inspiration for both personal growth and professional innovation.</p>
+                </div>
+                
+                <div class="skill-category" style="border-top-color: var(--accent-purple);">
+                    <h4><i class="fas fa-brain"></i> AI & Technology</h4>
+                    <p>Constantly exploring the latest developments in AI, Large Language Models (LLMs), and Agentic AI. Fascinated by the potential of these technologies to transform industries and solve complex problems.</p>
+                </div>
+
+                <div class="skill-category" style="border-top-color: var(--accent-purple);">
+                    <h4><i class="fas fa-cloud"></i> Multi-Cloud Innovation</h4>
+                    <p>Staying curious about the evolving multi-cloud landscape and automation technologies. Always eager to discover new tools and methodologies that can improve efficiency and scalability.</p>
+                </div>
+
+                <div class="skill-category" style="border-top-color: var(--accent-purple);">
+                    <h4><i class="fas fa-book-reader"></i> Continuous Learning</h4>
+                    <p>Committed to lifelong learning through technical blogs, research papers, and hands-on experimentation. Believe that staying updated with industry trends is crucial for professional excellence.</p>
+                </div>
+
+                <div class="skill-category" style="border-top-color: var(--accent-purple);">
+                    <h4><i class="fas fa-users"></i> Community & Mentorship</h4>
+                    <p>Enjoy sharing knowledge with the tech community through mentoring, speaking at conferences, and contributing to open-source projects. Believe in the power of collaboration and knowledge sharing.</p>
+                </div>
+
+                <div class="skill-category" style="border-top-color: var(--accent-purple);">
+                    <h4><i class="fas fa-camera"></i> Photography</h4>
+                    <p>Capturing moments and landscapes through photography, particularly during travels. This hobby enhances attention to detail and provides a creative outlet that complements technical work.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionName) {
+            // Hide all sections
+            const sections = ['home-section', 'professional-section', 'academic-section', 'personal-section'];
+            sections.forEach(section => {
+                document.getElementById(section).style.display = 'none';
+            });
+
+            // Show the selected section
+            if (sectionName === 'home') {
+                document.getElementById('home-section').style.display = 'block';
+            } else {
+                document.getElementById(sectionName + '-section').style.display = 'block';
+                document.getElementById(sectionName + '-section').classList.add('active');
+            }
+        }
+
+        // Initialize with home section visible
+        showSection('home');
+
+        // Add some interactive animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.02)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
